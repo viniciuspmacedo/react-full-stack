@@ -26,7 +26,12 @@ const LastReleases = () => {
                 {livros.map( livro => <img key={livro.id} src={livro.src}/>)}
             </NewBooksContainer>
 
-            <RecomendationCard tile={"Talvez você se interesse por..."} subtitle={"Angular"} />
+            <RecomendationCard 
+            tile={"Talvez você se interesse por..."} 
+            subtitle={"Angular"} 
+            description={"Conheça o frameworkweb do Google"}
+            imgSrc={"/images/livro2.png"}/>
+            
         </SectionContainer>
     )
 }
