@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import Title from "../Title"
 import { livros } from "./data"
+import RecomendationCard from "./RecomendationCard"
 
 const SectionContainer = styled.section`
 background-color: #EBECEE;
@@ -24,6 +25,8 @@ const LastReleases = () => {
             <NewBooksContainer>
                 {livros.map( livro => <img key={livro.id} src={livro.src}/>)}
             </NewBooksContainer>
+
+            <RecomendationCard tile={"Talvez você se interesse por..."} subtitle={"Angular"} />
         </SectionContainer>
     )
 }
