@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-const menuItems = ['CATEGORIAS', ' FAVORITOS', 'MINHA ESTANTE']
+const menuItems = ['CATEGORIAS', 'FAVORITOS', 'ESTANTE']
 
 const Item = styled.li`
     font-size: 16px;
@@ -30,7 +31,7 @@ const Menu = () => {
             <nav>
                 <ListItems>
                     {menuItems.map( (item, index) => {
-                        return <Item key={index}><a href="#">{item}</a></Item>
+                        return <Item key={index}><Link to={`/${item.toLowerCase()}`}>{item}</Link></Item>
                     })}
                 </ListItems>
             </nav>
