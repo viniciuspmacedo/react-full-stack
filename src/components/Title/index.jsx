@@ -5,7 +5,7 @@ const Title = styled.h2`
     font-size: ${props => props.$fontSize || "36px"};
     text-align: ${props => props.$align || "center"};
     width: 100%;
-    margin-bottom: 12px;
+    margin-bottom: 18px;
     background-color: ${props => props.$background || "#FFF"};
 `
 

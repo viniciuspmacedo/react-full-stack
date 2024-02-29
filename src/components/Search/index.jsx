@@ -11,6 +11,7 @@ const SearchContainer = styled.section`
     padding: 85px 0;
     width: 100%;
     height: 100%;
+    min-height: 80vh;
 `
 
 const ResultCard = styled.div`
