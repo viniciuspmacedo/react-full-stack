@@ -21,7 +21,7 @@ const NewBooksContainer = styled.div`
 const LastReleases = () => {
     return(
         <SectionContainer>
-            <Title $color={"#EB9B00"} $background={"#FFF"}>ULTIMOS LANÇAMENTOS</Title>
+            <Title $fontColor={"#EB9B00"} $background={"#FFF"}>ULTIMOS LANÇAMENTOS</Title>
             <NewBooksContainer>
                 {livros.map( livro => <img key={livro.id} src={livro.src}/>)}
             </NewBooksContainer>

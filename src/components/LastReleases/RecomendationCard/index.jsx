@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import Title from "../../Title"
-import SubTitle from "../../SubTitle"
 
 const StyledCard = styled.div`
     border-radius: 8px;
@@ -29,8 +28,8 @@ const RecomendationCard = ({tile, subtitle, description, imgSrc}) => {
     return(
         <StyledCard>
             <div>
-            <Title $align="start" $color="#111166" $fontSize="22px">{tile}</Title>
-            <h4 $color="#111166" $fontWeight = "bold">{subtitle}</h4>
+            <Title $align="start" $fontColor="#111166" $fontSize="22px">{tile}</Title>
+            <h4 color="#111166" fontWeight = "bold">{subtitle}</h4>
             <p>{description}</p>
             </div>
             <div>

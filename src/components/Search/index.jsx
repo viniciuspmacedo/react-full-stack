@@ -3,7 +3,9 @@ import Input from "../Input"
 import Title from "../Title"
 import SubTitle from "../SubTitle"
 import { useState } from "react"
-import { livros } from "./data"
+import { getLivros } from "../../servicos/livros"
+import { useEffect } from "react"
+import { postFavoriteToAPI } from "../../servicos/favorite"
 
 const SearchContainer = styled.section`
     background-image: linear-gradient(90deg, #002F52 35%, #326589 165%);
@@ -48,21 +50,36 @@ const ResultContainer = styled.div`
 const Search = () => {
 
     const [searchResult, setSearchResult] = useState([])
+    const [books, setBooks] = useState([]);
+
+    useEffect(()=>{
+        fetchBooks()
+    }, [])
+
+    async function fetchBooks(){
+        const booksAPI = await getLivros()
+        setBooks(booksAPI)
+    }
+
+    async function insertFavorite(id){
+        await postFavoriteToAPI(id)
+        alert(`Livro de id: ${id} adicionado aos favoritos`)
+    }
 
     return (
         <SearchContainer>
-            <Title $color={"#FFF"} $background={"transparent"}>Já sabe por onde começar?</Title>
+            <Title $fontColor={"#FFF"} $background={"transparent"}>Já sabe por onde começar?</Title>
             <SubTitle>Encontre o livro em nossa estante</SubTitle>
             <Input type="text" placeholder="Escreva sua próxima leitura."
                 onChange={(e) => {
                     const searchedText = e.target.value.toLocaleLowerCase()
-                    const result = searchedText ? livros.filter(livro => livro.nome.toLocaleLowerCase().includes(searchedText)) : []
+                    const result = searchedText ? books.filter(livro => livro.nome.toLocaleLowerCase().includes(searchedText)) : []
                     setSearchResult(result)
                 }}></Input>
             <ResultContainer>
                 {searchResult.map(livro => {
                     return (
-                        <ResultCard key={livro.id}>
+                        <ResultCard key={livro.id} onClick={()=> {insertFavorite(livro.id)}}>
                             <p>{livro.nome}</p>
                             <img src={livro.src} alt="capa do livro" />
                         </ResultCard>
